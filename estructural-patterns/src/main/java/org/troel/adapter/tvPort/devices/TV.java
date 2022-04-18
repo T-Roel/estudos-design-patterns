@@ -13,5 +13,4 @@ public class TV implements HDMI {
 	public void setSound(String sound) {
 		System.out.println(">>> This is your sound: " + sound);
 	}
-
 }

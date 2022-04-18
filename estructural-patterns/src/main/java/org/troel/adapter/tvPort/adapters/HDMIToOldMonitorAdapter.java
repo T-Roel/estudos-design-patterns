@@ -1,21 +1,19 @@
 package org.troel.adapter.tvPort.adapters;
 
+import org.troel.adapter.tvPort.devices.OldMonitor;
 import org.troel.adapter.tvPort.intefaces.HDMI;
-import org.troel.adapter.tvPort.intefaces.VGA;
 
-public class HDMIToVGAAdapter implements HDMI {
-	
-	private VGA vga;
-	
-	public HDMIToVGAAdapter(VGA vga) {
-		System.out.println("Conecting the HDMI/VGA adapter...");
-		this.vga = vga;
+public class HDMIToOldMonitorAdapter extends OldMonitor implements HDMI {
+
+	public HDMIToOldMonitorAdapter() {
+		super();
+		System.out.println("Wrapping the VGA's OldMonitor's Interface with a HDMI adapter.");
 	}
-
+	
 	@Override
 	public void setImage(String image) {
 		System.out.println("Converting the image from HDMI to VGA");
-		vga.setImage(image);
+		super.setImage(image);
 	}
 
 	@Override
