@@ -11,5 +11,4 @@ public class Expresso implements Drink {
 	public Double getPrice() {
 		return 1.5d;
 	}
-
 }

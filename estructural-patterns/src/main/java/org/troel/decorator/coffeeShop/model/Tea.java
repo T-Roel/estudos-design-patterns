@@ -11,6 +11,4 @@ public class Tea implements Drink {
 	public Double getPrice() {
 		return 1d;
 	}
-
-	
 }

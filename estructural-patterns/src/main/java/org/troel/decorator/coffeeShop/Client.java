@@ -3,6 +3,8 @@ package org.troel.decorator.coffeeShop;
 import org.troel.decorator.coffeeShop.model.Drink;
 import org.troel.decorator.coffeeShop.model.Expresso;
 import org.troel.decorator.coffeeShop.model.Tea;
+import org.troel.decorator.coffeeShop.model.decorators.DoubleDrink;
+import org.troel.decorator.coffeeShop.model.decorators.Milk;
 
 public class Client {
 	
@@ -16,6 +18,8 @@ public class Client {
 	public static void main(String[] args) {
 		order("Expresso", new Expresso());
 		order("Tea", new Tea());
-		
+		order("Lungo", new DoubleDrink(new Expresso()));
+		order("Cafe au Lait", new Milk(new Expresso()));
+		order("English Tea", new Milk(new Tea()));
 	}
 }
