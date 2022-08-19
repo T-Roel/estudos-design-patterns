@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.troel.facade.callCenter.model.Card;
 
-public class CardService {
+class CardService {
 	private Map<Long, Card> memory;
 	
 	public CardService() {

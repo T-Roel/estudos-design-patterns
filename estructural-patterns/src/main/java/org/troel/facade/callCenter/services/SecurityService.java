@@ -5,7 +5,7 @@ import java.util.List;
 import org.troel.facade.callCenter.model.Card;
 import org.troel.facade.callCenter.model.Register;
 
-public class SecurityService {
+class SecurityService {
 	private CardService cardService;
 	private RegisterService registerService;
 	
