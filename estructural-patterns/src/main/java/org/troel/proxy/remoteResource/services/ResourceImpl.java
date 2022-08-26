@@ -2,10 +2,10 @@ package org.troel.proxy.remoteResource.services;
 
 public class ResourceImpl implements Resource {
 	private String data;
-	
+
 	public ResourceImpl() throws InterruptedException {
 		System.out.println("Loading resources from data structure");
-		for(int i = 5; i > 0; i--) {
+		for (int i = 5; i > 0; i--) {
 			Thread.sleep(1000);
 			System.out.print(".");
 		}
@@ -17,5 +17,4 @@ public class ResourceImpl implements Resource {
 	public String getData() {
 		return data;
 	}
-
 }

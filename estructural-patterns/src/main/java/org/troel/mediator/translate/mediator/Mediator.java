@@ -12,7 +12,7 @@ public abstract class Mediator {
 		System.out.println(String.format("'%s' is in the room", user.getName()));
 		users.put(user.getName(), user);
 	}
-	
+
 	public void removeUser(User user) {
 		System.out.println(String.format("'%s' is out", user.getName()));
 		users.remove(user.getName());
