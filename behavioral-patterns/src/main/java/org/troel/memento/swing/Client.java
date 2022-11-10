@@ -11,6 +11,8 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
 import org.troel.memento.swing.component.TextAreaWithMemory;
+import org.troel.memento.swing.component.TextAreaWithMemory.TextAreaMemento;
+import org.troel.memento.swing.memory.Caretaker;
 
 public class Client {
 
@@ -41,6 +43,40 @@ public class Client {
 		
 		frame.add(bottomPanel, BorderLayout.SOUTH);
 		
+		//Pattern usage...
+		
+		Caretaker caretaker = new Caretaker();
+		save.addActionListener(e -> {
+			caretaker.add(originator.save());
+			mementosList.addItem(caretaker.getHistoryList().size() + "");
+			mementosList.setSelectedItem(caretaker.getHistoryList().size() + "");
+			originator.requestFocusInWindow();
+		});
+		
+		mementosList.addItemListener(e -> {
+			originator.restore((TextAreaMemento) caretaker.get(mementosList.getSelectedIndex()));
+			originator.requestFocusInWindow();
+		});
+		
+		next.addActionListener(e -> {
+			if(mementosList.getSelectedIndex() < mementosList.getItemCount() - 1) {
+				int nextItem = mementosList.getSelectedIndex() + 1;
+				originator.restore((TextAreaMemento) caretaker.get(nextItem));
+				mementosList.setSelectedIndex(nextItem);
+				originator.requestFocusInWindow();
+			}
+		});
+		
+		previous.addActionListener(e -> {
+			if(mementosList.getSelectedIndex() > 0) {
+				int previousItem = mementosList.getSelectedIndex() - 1;
+				originator.restore((TextAreaMemento) caretaker.get(previousItem));
+				mementosList.setSelectedIndex(previousItem);
+				originator.requestFocusInWindow();
+			}
+		});
+		
+		//End pattern usage...
 		
 		frame.setSize(400,200);  
 		frame.setVisible(true);

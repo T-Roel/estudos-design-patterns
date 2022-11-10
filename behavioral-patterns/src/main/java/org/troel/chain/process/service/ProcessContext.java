@@ -11,17 +11,8 @@ public class ProcessContext {
 		context = new LinkedHashMap<String, Object>();
 	}
 
-	@SuppressWarnings("unchecked")
 	public Object get(String key) throws Exception {
-		if(!key.contains(".")) return context.get(key);
-		String[] steps = key.split("\\.");
-		Object currentMap = context;
-		for(String step: steps) {
-			if(currentMap instanceof Map)
-				currentMap = ((Map<String, Object>) currentMap).get(step);
-			else throw new Exception(String.format("Could not navigate through %s step", step));
-		}
-		return currentMap;
+		return context.get(key);
 	}
 
 	public Object put(String key, Object value) {
