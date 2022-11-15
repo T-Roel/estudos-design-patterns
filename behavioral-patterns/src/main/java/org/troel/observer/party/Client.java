@@ -1,32 +1,17 @@
 package org.troel.observer.party;
 
-import org.troel.observer.party.characters.Doorman;
-import org.troel.observer.party.characters.Wife;
+import org.troel.observer.party.observers.Friend;
+import org.troel.observer.party.observers.Wife;
+import org.troel.observer.party.subject.Doorman;
 
 public class Client {
 
 	public static void main(String[] args) {
 		Doorman reception = new Doorman();
-		Wife wife = new Wife(reception);
+		reception.add(new Wife());
+		reception.add(new Friend());
 		
-		wife.startPartyIfPossible();
-		
-		System.out.println("5 minutes later...");
-		wife.startPartyIfPossible();
-		
-		System.out.println("5 minutes later...");
-		wife.startPartyIfPossible();
-		
-		System.out.println("5 minutes later...");
-		wife.startPartyIfPossible();
-		
-		System.out.println("5 minutes later...");
-		wife.startPartyIfPossible();
-		
-		System.out.println("Husband is comming");
+		System.out.println("Husband is comming!");
 		reception.setStatus(true);
-		
-		System.out.println("5 minutes later...");
-		wife.startPartyIfPossible();
 	}
 }
